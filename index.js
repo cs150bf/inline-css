@@ -38,7 +38,7 @@ function inlineContent(src, options, callback) {
     });
 }
 
-module.exports = function (html, options, callback) {
+function inlineCssAsync(src, options, callback) {
     var opt = extend({
             extraCss: '',
             applyStyleTags: true,
@@ -49,11 +49,22 @@ module.exports = function (html, options, callback) {
             applyWidthAttributes: false,
         }, options);
 
-    inlineContent(html, opt, function (err, content) {
+    inlineContent(src, opt, function (err, content) {
         if (err) {
             callback(err);
         } else {
             callback(null, content);
         }
     });
+}
+
+function inlineCssSync(html, css, options) {
+  var content;
+  content = inlineCss(html, css, options);
+  return content;
+}
+
+module.exports = {
+  inlineCss: inlineCssAsync,
+  inlineCssSync: inlineCssSync
 };

@@ -67,17 +67,43 @@ npm install --save inline-css
 ## Usage
 
 ```js
-var inlineCss = require('inline-css');
+var inlineCss = require('inline-css').inlineCss;
 
 inlineCss('/path/to/file.html', options, function(err, html) {
     console.log(html);
 });
 ```
 
+
+```js
+var inlineCssSync = require('inline-css').inlineCssSync;
+
+html = inlineCssSync(html, css, options);
+```
+
 ## API
 
-### inlineCss(html, options, callback)
+### inlineCssSync(html, css, options)
 
+#### html
+
+Type: `String`  
+
+HTML string
+
+#### css
+
+Type: `String`  
+
+Stylesheet string
+
+### inlineCss(src, options, callback)
+
+#### src
+
+Type: `String`  
+
+Path to an HTML file.
 
 #### options.extraCss
 
